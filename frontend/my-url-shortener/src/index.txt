@@ -1,0 +1,12 @@
+feat: create URL input form
+
+feat: display shortened URL
+
+feat: handle update request
+
+feat: add stats view component
+
+chore: setup axios instance
+
+style: add basic tailwind styles
+
