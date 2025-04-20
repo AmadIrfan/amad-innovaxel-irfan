@@ -67,6 +67,17 @@ class UrlController {
         }
     }
 
+    static async deleteUrls(req, res) {
+        try {
+            const { shortCode } = req.params;
+            const result = await Url.deleteOne({ shortCode });
+            if (result.deletedCount === 0) return res.status(404).json('Not found');
+            return res.status(204).json("No Content");
+        } catch (err) {
+            return res.send(err.message);
+        }
+    }
+
 
 
 }
