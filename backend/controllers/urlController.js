@@ -78,6 +78,19 @@ class UrlController {
         }
     }
 
+    static async getStates(req, res) {
+        try {
+
+            const { shortCode } = req.params;
+            const entry = await Url.findOne({ shortCode });
+            if (!entry) return res.status(404).json('Not Found');
+            
+            console.log(entry);
+            res.json(entry);
+        } catch (err) {
+            return res.send( err.message);
+        }
+    }
 
 
 }
