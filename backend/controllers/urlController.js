@@ -23,6 +23,26 @@ class UrlController {
             return res.send(err.message)
         }
     }
+    static async getUrls(req, res) {
+        try {
+
+            const { shortCode } = req.params;
+            const entry = await Url.findOne({ shortCode });
+            if (!entry) return res.status(404).json("Not Found");
+
+            entry.accessCount++;
+            await entry.save();
+            const response = entry.toObject();
+            // @ts-ignore
+            delete response.accessCount;
+
+            return res.send(response);
+        } catch (err) {
+            return res.send(err.message);
+        }
+    }
+
+
 
 }
 
