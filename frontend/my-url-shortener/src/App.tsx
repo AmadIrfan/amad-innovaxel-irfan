@@ -1,12 +1,17 @@
-import React from 'react'
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Components/Home/Home";
+import Shorten from "./Components/Shorten/Shorten";
+import NotFount from "./Components/Not Found/NotFound";
 const App = () => {
-  return (
-      <div>
-          <h1>Welcome to  Url Shorten</h1>
+	return (
+		<Router>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/shorten/:shortCode" element={<Shorten />} />
+				<Route path="/404" element={<NotFount />} />
+			</Routes>
+		</Router>
+	);
+};
 
-    </div>
-  )
-}
-
-export default App
+export default App;
