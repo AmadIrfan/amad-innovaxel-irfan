@@ -2,6 +2,7 @@
 // File: backend/server.js
 const express = require('express');
 const cors = require('cors');
+const morgan = require('morgan');
 require("dotenv").config();
 const { nanoid } = require('nanoid');
 const { Url } = require('./models/urlModels');
@@ -9,6 +10,7 @@ const db = require('./db/db')
 const urlShortenRoute = require('./routes/urlRoute');
 const app = express();
 app.use(cors());
+app.use(morgan('dev'));
 app.use(express.json());
 app.use('/shorten', urlShortenRoute)
 app.get('/', (req, res) => {
